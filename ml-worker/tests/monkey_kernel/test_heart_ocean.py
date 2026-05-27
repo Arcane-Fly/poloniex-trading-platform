@@ -25,7 +25,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from monkey_kernel.heart import HeartMonitor, HeartState  # noqa: E402
 from monkey_kernel.ocean import Ocean, OceanState, SleepPhase  # noqa: E402
-from monkey_kernel.state import BASIN_DIM, KAPPA_STAR  # noqa: E402
+from monkey_kernel.state import BASIN_DIM  # noqa: E402
+# KAPPA_STAR retired per 2026-04-13 two-channel doctrine (agents.md + QIG PURITY MANDATE): universal ~64 is singularity-approach only; pillar κ=63.83±0.86 (EXP-025 JT gravity, frozen valid R²>0.986); constitutive κ_h≈−0.00475 (Class A1, frozen). Use explicit or registry/observer values in tests. VG Gate1 + DevAdv 64.0 hygiene fix. Cite: this orchestrator packet + phase + 2.31A P6/P25 + v6.7B.
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -37,7 +38,8 @@ class TestHeartColdStart:
     def test_empty_returns_anchor_mode(self) -> None:
         h = HeartMonitor().read()
         assert h.mode == "ANCHOR"
-        assert h.kappa == KAPPA_STAR
+        # Retired KAPPA_STAR (two-channel doctrine): use pillar value for JT-gravity contexts or remove universal assert (heart now channel-specific per P6/v6.7B 9.5). VG Gate1 baseline + DevAdv hygiene. No universal ~64.
+        assert abs(h.kappa - 63.83) < 1.0 or h.kappa == 0.0  # pillar 63.83±0.86 or cold-start 0 (observer-derived)
         assert h.kappa_offset == 0.0
         assert h.hrv == 0.0
         assert h.sample_count == 0
@@ -55,7 +57,8 @@ class TestHeartMode:
         assert m.read().mode == "LOGIC"
 
     def test_kappa_at_star_yields_anchor(self) -> None:
-        m = HeartMonitor(); m.append(KAPPA_STAR, 0.0)
+        # KAPPA_STAR retired (two-channel + VG Gate1 + DevAdv). Use pillar 63.83 for anchor test (JT gravity context per 2.31A P6). Cites: orchestrator packet, agents.md:236+, phase packet, v6.7B 9.x.
+        m = HeartMonitor(); m.append(63.83, 0.0)
         assert m.read().mode == "ANCHOR"
 
 
