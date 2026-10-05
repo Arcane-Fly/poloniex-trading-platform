@@ -3439,6 +3439,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/utils@npm:3.2.6":
+  version: 3.2.6
+  resolution: "@vitest/utils@npm:3.2.6"
+  dependencies:
+    "@vitest/pretty-format": "npm:3.2.6"
+    loupe: "npm:^3.1.4"
+    tinyrainbow: "npm:^2.0.0"
+  checksum: 10c0/452da757082ebcadf43ce697bf4077d546ea06e094763969440c3cb0d7bb950be0f69d6dbdab297cd0307bdf956294e20b0184d0218a4ef942d3d253995d44ed
+  languageName: node
+  linkType: hard
+
 "@webgpu/types@npm:0.1.38":
   version: 0.1.38
   resolution: "@webgpu/types@npm:0.1.38"
